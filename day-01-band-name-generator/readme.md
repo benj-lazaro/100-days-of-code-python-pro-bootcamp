@@ -1,9 +1,7 @@
 ## Band Name Generator
-
 A command-line Band Name Generator
 
 ### What does it do?
-
 The program will ask the user to provide the following information:
 * <b>Name of the city</b> where he/she grew up
 * <b>Name of a pet</b>
