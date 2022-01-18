@@ -11,7 +11,7 @@ Based on these information, the program will generate a Band Name
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
-<b>python band-name-generator.py</b>
+python <b>band-name-generator.py</b>
 
 The program will prompt a couple of questions, type your answer followed by pressing the <b>ENTER</b> key.
 
@@ -19,7 +19,7 @@ The program will prompt a couple of questions, type your answer followed by pres
 
 
 ### Program Recipe:
-The program is created using String Concatenation and the following <b>built-in Python functions</b>:
+The program is created using <b>String Concatenation</b> and the following <b>built-in Python functions</b>:
 * <b>input()</b>
 * <b>len()</b>
 * <b>print()</b>
