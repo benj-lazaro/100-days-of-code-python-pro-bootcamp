@@ -27,7 +27,7 @@ print("Welcome to Tresure Island.")
 print("Your mission is to find the treasure.")
 
 # Display 1st situation to the user
-user_direction = input("You're at a cross road. Where do you want to go? Type \"left\" or \"right\".\n").lower()
+user_direction = input("You're at a crossroad. Where do you want to go? Type \"left\" or \"right\".\n").lower()
 
 # Get direction where the user is heading (left | right)
 if user_direction == "left":
