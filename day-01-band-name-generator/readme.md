@@ -11,7 +11,7 @@ Based on these information, the program will generate a Band Name
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
-python <b>band-name-generator.py</b>
+python3 <b>band-name-generator.py</b>
 
 The program will prompt a couple of questions, type your answer followed by pressing the <b>ENTER</b> key.
 

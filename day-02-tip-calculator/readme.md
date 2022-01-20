@@ -11,7 +11,7 @@ Based on these information, the program will calculate what each person should p
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
-python <b>tip-calculator.py</b>
+python3 <b>tip-calculator.py</b>
 
 The program will prompt the user a number of questions, answers are typed followed by pressing the <b>ENTER</b> key.
 
