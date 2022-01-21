@@ -15,7 +15,7 @@ password_symbols = int(input("How many symbols would you like? "))
 password_numbers = int(input("How many numbers? "))
 
 password_generated = ""
-# Easy level: Generate password in sequence order (letter, symbols & number)
+# Easy level: Generate password in sequence order (letter, symbol & number)
 for character in range(1, password_letters + 1):
     password_generated += random.choice(letters)
 
