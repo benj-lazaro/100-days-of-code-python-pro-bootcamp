@@ -26,6 +26,12 @@ for number in range(1, password_numbers + 1):
     password_generated += random.choice(numbers)
 
 # Display generated password
-print(password_generated)
+print(f"Easy Level Password: {password_generated}")
 
 # Hard level: Generate password in completely random order
+hard_password_generated = ""
+
+for character in password_generated:
+    hard_password_generated += random.choice(password_generated)
+
+print(f"Hard Level Pasword:  {hard_password_generated}")
