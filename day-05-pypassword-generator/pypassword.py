@@ -50,4 +50,5 @@ hard_level_password = ""
 for character in hard_password_generated:
     hard_level_password += character
 
+# Display generated password
 print(f"Hard Level Password: {hard_level_password}")
