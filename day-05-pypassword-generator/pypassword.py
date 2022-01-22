@@ -14,8 +14,9 @@ password_letters = int(input("How many letters would you like in your password? 
 password_symbols = int(input("How many symbols would you like? "))
 password_numbers = int(input("How many numbers? "))
 
-password_generated = ""
 # Easy level: Generate password in sequence order (letter, symbol & number)
+password_generated = ""
+
 for character in range(1, password_letters + 1):
     password_generated += random.choice(letters)
 
@@ -29,9 +30,24 @@ for number in range(1, password_numbers + 1):
 print(f"Easy Level Password: {password_generated}")
 
 # Hard level: Generate password in completely random order
-hard_password_generated = ""
+hard_password_generated = []
 
-for character in password_generated:
-    hard_password_generated += random.choice(password_generated)
+for character in range(1, password_letters + 1):
+    hard_password_generated += random.choice(letters)
 
-print(f"Hard Level Pasword:  {hard_password_generated}")
+for symbol in range(1, password_symbols + 1):
+    hard_password_generated += random.choice(symbols)
+
+for number in range(1, password_numbers + 1):
+    hard_password_generated += random.choice(numbers)
+
+# Shuffle list items randomly
+random.shuffle(hard_password_generated)
+
+hard_level_password = ""
+
+# Concatenate list items into a string
+for character in hard_password_generated:
+    hard_level_password += character
+
+print(f"Hard Level Password: {hard_level_password}")
