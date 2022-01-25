@@ -1,4 +1,4 @@
-## Day 03 Exercises
+## Day 05 Exercises
 Day 05 Python 3 exercises
 
 ### Program descriptions
