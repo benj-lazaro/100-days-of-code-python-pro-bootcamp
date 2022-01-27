@@ -15,6 +15,6 @@ The program will prompt the user a guess the word, asks to type a letter followe
 <b>NOTE:</b> It is assumed that the <b>Python 3 interpreter</b> has already been installed on your computer.
 
 ### Program Recipe:
-The program is created using <b>random</b> module, <b>random.choice()</b> method, <b>for-in</b> loop, <b>string concatenation</b>, <b>data type conversion</b>, <b>list</b> data structure and the following <b>built-in Python functions</b>:
+The program is created using <b>random</b> module, <b>random.choice()</b> method, <b>for-in</b> loop, <b>data type conversion</b>, <b>list</b> data structure and the following <b>built-in Python functions</b>:
 * <b>input()</b>
 * <b>print()</b>
