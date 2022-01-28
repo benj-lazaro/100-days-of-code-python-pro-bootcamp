@@ -11,9 +11,10 @@ print(f"Psst, the solution is {chosen_word}.")
 # For each letter in the chosen_word, add "_" to 'display'
 # SO if the chosen_word is 'apple', display should be ["_", "_", "_", "_", "_"] with 5 "_" representing each letter to guess.
 display = []
+chosen_word_length = len(chosen_word)
 
-for position in range(0, len(chosen_word)):
-    display.append("_")
+for position in range(chosen_word_length):
+    display += "_"
 
 guess = str(input("Guess a letter: ")).lower()
 
@@ -27,9 +28,9 @@ guess = str(input("Guess a letter: ")).lower()
 #     else:
 #         print("Wrong")
 
-for letter in range(0, len(chosen_word)):
-    if guess == chosen_word[letter]:
-        display[letter] = guess
+for index_position in range(chosen_word_length):
+    if guess == chosen_word[index_position]:
+        display[index_position] = guess
 
 # TODO #3: Print 'display' and you should see the guessed letter in the correct position and every other letter replace with "_"
 # Hint - Don't worry about getting the user to guess the next leter. We'll tackle that in step 3.
