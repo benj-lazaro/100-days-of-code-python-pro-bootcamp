@@ -1,19 +1,36 @@
-# Import module
+# Step 2
+
 import random
-
-# Pre-made word list
 word_list = ["ardvark", "baboon", "camel"]
-
-# TODO #1: Randomly choose a word from the word_list and assign it to a variable called chosen_word
 chosen_word = random.choice(word_list)
 
-# TODO #2: Ask the user to guess a letter and assign their answer to a variable called guess.
-# Make the value of guess lowercase.
+# Testing code
+print(f"Psst, the solution is {chosen_word}.")
+
+# TODO #1: Create an empty list called display.
+# For each letter in the chosen_word, add "_" to 'display'
+# SO if the chosen_word is 'apple', display should be ["_", "_", "_", "_", "_"] with 5 "_" representing each letter to guess.
+display = []
+
+for position in range(0, len(chosen_word)):
+    display.append("_")
+
 guess = str(input("Guess a letter: ")).lower()
 
-# TODO #3: Check if the letter the user guessed (guess) is one of the letters in the chosen_word
-for character in chosen_word:
-    if character == guess:
-        print("Right")
-    else:
-        print("Wrong")
+# TODO #2: Loop through each position in the chosen_word;
+# If the letter at that position matches 'guess' then reveal that letter in the display at that position.
+# e.g. If the user guessed "p" and the chosen_word was "apple", then display should be ["_", "p", "p", "_", "_"]
+# for character in chosen_word:
+#     if character == guess:
+#         print("Right")
+#         print(character)
+#     else:
+#         print("Wrong")
+
+for letter in range(0, len(chosen_word)):
+    if guess == chosen_word[letter]:
+        display[letter] = guess
+
+# TODO #3: Print 'display' and you should see the guessed letter in the correct position and every other letter replace with "_"
+# Hint - Don't worry about getting the user to guess the next leter. We'll tackle that in step 3.
+print(display)
