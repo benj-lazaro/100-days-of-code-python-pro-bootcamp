@@ -6,7 +6,6 @@ chosen_word = random.choice(word_list)
 chosen_word_length = len(chosen_word)
 end_of_game = False
 
-
 # Testing code
 print(f"Psst, the solution is {chosen_word}.")
 
