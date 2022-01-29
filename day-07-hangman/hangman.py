@@ -1,37 +1,32 @@
-# Step 2
+# Step 3
 
 import random
 word_list = ["ardvark", "baboon", "camel"]
 chosen_word = random.choice(word_list)
+chosen_word_length = len(chosen_word)
+end_of_game = False
+
 
 # Testing code
 print(f"Psst, the solution is {chosen_word}.")
 
-# TODO #1: Create an empty list called display.
-# For each letter in the chosen_word, add "_" to 'display'
-# SO if the chosen_word is 'apple', display should be ["_", "_", "_", "_", "_"] with 5 "_" representing each letter to guess.
+# Create blanks
 display = []
-chosen_word_length = len(chosen_word)
 
 for position in range(chosen_word_length):
     display += "_"
 
-guess = str(input("Guess a letter: ")).lower()
+# TODO #1: Use a while loop to let the user guess again. The loop should only stop once the user has guessed all the letters in the chosen_word and 'display' has no more blank ("_"). Then you can tell the user they've won.
 
-# TODO #2: Loop through each position in the chosen_word;
-# If the letter at that position matches 'guess' then reveal that letter in the display at that position.
-# e.g. If the user guessed "p" and the chosen_word was "apple", then display should be ["_", "p", "p", "_", "_"]
-# for character in chosen_word:
-#     if character == guess:
-#         print("Right")
-#         print(character)
-#     else:
-#         print("Wrong")
+while not end_of_game:
+    guess = str(input("Guess a letter: ")).lower()
 
-for index_position in range(chosen_word_length):
-    if guess == chosen_word[index_position]:
-        display[index_position] = guess
+    # Check guessed letter
+    for index_position in range(chosen_word_length):
+        if guess == chosen_word[index_position]:
+            display[index_position] = guess
 
-# TODO #3: Print 'display' and you should see the guessed letter in the correct position and every other letter replace with "_"
-# Hint - Don't worry about getting the user to guess the next leter. We'll tackle that in step 3.
-print(display)
+    print(display)
+
+    if "_" not in display:
+        end_of_game = True
