@@ -9,7 +9,6 @@ end_of_game = False
 # Testing code
 print(f"Psst, the solution is {chosen_word}.")
 
-# Create blanks
 display = []
 
 for position in range(chosen_word_length):
