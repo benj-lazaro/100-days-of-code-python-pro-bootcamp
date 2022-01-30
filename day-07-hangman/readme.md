@@ -1,4 +1,4 @@
-## PyPassword Generator
+## Hangman
 A command-line hangman game
 
 ### What does it do?
