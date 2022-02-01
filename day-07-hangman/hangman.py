@@ -25,6 +25,7 @@ while not end_of_game:
     if guess in display:
         print(f"You've already guessed {guess}")
 
+    # Checked guessed letter
     for index_position in range(chosen_word_length):
         letter = chosen_word[index_position]
 
