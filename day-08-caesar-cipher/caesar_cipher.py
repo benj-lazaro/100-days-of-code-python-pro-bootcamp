@@ -12,7 +12,7 @@ def  encrypt(plain_text, shift_value):
         letter_index = alphabet.index(letter)
         cipher_letter_index = letter_index + shift_value
 
-        # Wrap around the list index to the beginning item it reached the last element
+        # Wrap around the alphabet list index to the beginning item it reached the last element
         if (letter_index >= 25):
             letter_index = 0
             cipher_letter_index = letter_index + shift_value - 1
