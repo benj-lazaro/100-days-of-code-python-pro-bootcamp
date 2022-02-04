@@ -14,7 +14,7 @@ def  encrypt(plain_text, shift_value):
         cipher_letter = alphabet[cipher_letter_index]
         cipher_text += cipher_letter
 
-    print(cipher_text)
+    print(f"The encoded message is {cipher_text}")
 
     #TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.
     #e.g.
