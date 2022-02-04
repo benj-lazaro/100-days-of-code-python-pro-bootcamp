@@ -6,15 +6,15 @@ shift = int(input("Type the shift number:\n"))
 
 #TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift' as inputs.
 def  encrypt(plain_text, shift_value):
-    cipher_text = []
+    cipher_text = ""
 
     for letter in plain_text:
         letter_index = alphabet.index(letter)
         cipher_letter_index = letter_index + shift_value
         cipher_letter = alphabet[cipher_letter_index]
-        cipher_text.append(cipher_letter)
+        cipher_text += cipher_letter
 
-    print(''.join(cipher_text))
+    print(cipher_text)
 
     #TODO-2: Inside the 'encrypt' function, shift each letter of the 'text' forwards in the alphabet by the shift amount and print the encrypted text.
     #e.g.
