@@ -44,8 +44,7 @@ def  decrypt(cipher_text, shift_value):
         cipher_index = alphabet.index(letter)
         clear_letter_index = cipher_index - shift_value
 
-        clear_letter = alphabet[clear_letter_index]
-        clear_text += clear_letter
+        clear_text += alphabet[clear_letter_index]
 
     print(f"The decoded text is {clear_text}")
 
