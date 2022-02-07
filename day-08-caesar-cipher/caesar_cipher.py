@@ -5,16 +5,23 @@ text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
 def  encrypt(plain_text, shift_value):
+    MAX_INDEX = 25
     cipher_text = ""
 
     for letter in plain_text:
         letter_index = alphabet.index(letter)
         cipher_letter_index = letter_index + shift_value
 
-        # Wrap around the alphabet list index to the beginning item it reached the last element
-        if (letter_index >= 25):
+        # Wrap around the alphabet list index to the beginning item if it reaches last element
+        if (letter_index >= MAX_INDEX):
             letter_index = 0
             cipher_letter_index = letter_index + shift_value - 1
+
+        # Wrap around if alphabet list index + shift value reaches the last element
+        if (letter_index + shift_value > MAX_INDEX):
+            difference_index= MAX_INDEX - letter_index
+            letter_index = 0
+            cipher_letter_index = (shift_value - difference_index) + letter_index - 1
 
         cipher_letter = alphabet[cipher_letter_index]
         cipher_text += cipher_letter
@@ -28,11 +35,6 @@ def  decrypt(cipher_text, shift_value):
     for letter in cipher_text:
         cipher_index = alphabet.index(letter)
         clear_letter_index = cipher_index - shift_value
-
-        # Wrap around the alphabet list index to the beginning item it reached the first element
-        if (cipher_index <= 0):
-            cipher_index = 25
-            clear_letter_index = cipher_index - shift_value + 1
 
         clear_letter = alphabet[clear_letter_index]
         clear_text += clear_letter
