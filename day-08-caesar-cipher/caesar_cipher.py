@@ -29,6 +29,7 @@ def  decrypt(cipher_text, shift_value):
         cipher_index = alphabet.index(letter)
         clear_letter_index = cipher_index - shift_value
 
+        # Wrap around the alphabet list index to the beginning item it reached the first element
         if (cipher_index <= 0):
             cipher_index = 25
             clear_letter_index = cipher_index - shift_value + 1
@@ -37,19 +38,6 @@ def  decrypt(cipher_text, shift_value):
         clear_text += clear_letter
 
     print(f"The decoded text is {clear_text}")
-
-    # for letter in cipher_text:
-    #     cipher_index = alphabet.index(letter)
-    #     clear_letter_index = cipher_index - 1
-    #
-    #     if (cipher_index <= 0):
-    #         cipher_index = 25
-    #         clear_letter_index = cipher_index - shift_value + 1
-    #
-    #     clear_letter = alphabet[clear_letter_index]
-    #     clear_text += clear_letter
-    #
-    # print(f"The decoded text is {clear_text}")
 
   #TODO-2: Inside the 'decrypt' function, shift each letter of the 'text' *backwards* in the alphabet by the shift amount and print the decrypted text.
   #e.g.
