@@ -43,7 +43,6 @@ def  decrypt(cipher_text, shift_value):
     for letter in cipher_text:
         cipher_index = alphabet.index(letter)
         clear_letter_index = cipher_index - shift_value
-
         clear_text += alphabet[clear_letter_index]
 
     print(f"The decoded text is {clear_text}")
