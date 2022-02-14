@@ -10,16 +10,18 @@ def clear_terminal_screen():
     print("\n" * 100)
 
 # Determine the auction's winner (i.e. highest bidder)
-def auction_winner():
+def find_auction_winner(bidding_record):
     highest_bid = 0
-    highest_bidder = ""
+    leading_bidder = ""
 
-    for key in bidders:
-        if bidders[key] > highest_bid:
-            highest_bidder = key
-            highest_bid = bidders[key]
+    for bidder in bidders:
+        bid_amount = bidding_record[bidder]
 
-    print(f"The winner is {highest_bidder} with a bid of ${highest_bid}.")
+        if bid_amount > highest_bid:
+            highest_bid = bid_amount
+            leading_bidder = bidder
+
+    print(f"The winner is {leading_bidder} with a bid of ${highest_bid}.")
 
 # Print logo & welcome message
 print(logo)
@@ -31,10 +33,10 @@ while auction:
     bid_value = int(input("What's your bid?: $"))
     bidders[name] = bid_value
 
-    continue_auction = input("Are there any other bidders? Type 'yes' or 'no'.\n").lower()
-    if continue_auction == 'yes':
+    continue_bidding = input("Are there any other bidders? Type 'yes' or 'no'.\n").lower()
+    if continue_bidding  == 'yes':
         clear_terminal_screen()
     else:
         auction = False
         clear_terminal_screen()
-        auction_winner()
+        find_auction_winner(bidders)
