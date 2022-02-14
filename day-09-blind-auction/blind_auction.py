@@ -31,8 +31,8 @@ while auction:
     bid_value = int(input("What's your bid?: $"))
     bidders[name] = bid_value
 
-    others = input("Are there any other bidders? Type 'yes' or 'no'.\n").lower()
-    if others == 'yes':
+    continue_auction = input("Are there any other bidders? Type 'yes' or 'no'.\n").lower()
+    if continue_auction == 'yes':
         clear_terminal_screen()
     else:
         auction = False
