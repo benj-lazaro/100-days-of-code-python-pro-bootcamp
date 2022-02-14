@@ -17,7 +17,7 @@ def clear_terminal_screen():
 print(logo)
 print("Welcome to the secret auction program.")
 
-# Gather bidder name & bid value
+# Gather bidder names & bid values
 while auction:
     name = input("What is your name?: ")
     bid_value = int(input("What's your bid?: $"))
