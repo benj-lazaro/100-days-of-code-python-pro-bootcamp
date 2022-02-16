@@ -41,5 +41,8 @@ print(f"{num1} {operation_symbol} {num2} = {first_answer}")
 operation_symbol = input("Pick another operation: ")
 num3 = int(input("What's the next number?: "))
 calculation_function = operations[operation_symbol]
+
+# Bug: The 2nd operational_symbol will be used to calculate all 3 numbers
+# The 1st operational_symbol will be disregarded
 second_answer = calculation_function(calculation_function(num1, num2), num3)
 print(f"{first_answer} {operation_symbol} {num3} = {second_answer}")
