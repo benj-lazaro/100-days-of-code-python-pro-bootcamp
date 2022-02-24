@@ -31,18 +31,19 @@ num1 = int(input("What's the first number?: "))
 for symbol in operations:
     print(symbol)
 
-operation_symbol = input("Pick an operation from the line above: ")
-num2 = int(input("What's the second number?: "))
+should_continue = True
 
-calculation_function = operations[operation_symbol]
-first_answer = calculation_function(num1, num2)
-print(f"{num1} {operation_symbol} {num2} = {first_answer}")
+while should_continue:
+    operation_symbol = input("Pick an operation: ")
+    next_number = int(input("What's the next number?: "))
 
-operation_symbol = input("Pick another operation: ")
-num3 = int(input("What's the next number?: "))
-calculation_function = operations[operation_symbol]
+    calculation_function = operations[operation_symbol]
+    answer = calculation_function(num1, next_number)
+    print(f"{num1} {operation_symbol} {next_number} = {answer}")
 
-# Bug: The 2nd operational_symbol will be used to calculate all 3 numbers
-# The 1st operational_symbol will be disregarded
-second_answer = calculation_function(calculation_function(num1, num2), num3)
-print(f"{first_answer} {operation_symbol} {num3} = {second_answer}")
+    user_response = input(f"Type 'y' to continue calaulating with {answer}, or type 'n' to exit.: ")
+
+    if user_response == 'y':
+        num1 = answer
+    else:
+        should_continue = False
