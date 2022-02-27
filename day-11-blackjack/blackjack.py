@@ -91,11 +91,11 @@ def calculate_score(deck):
 
 def compare(computer, user):
     if computer > user:
-        print("Computer Win!")
+        print("Computer Win!\n")
     elif computer == user:
         print("Push!")
     elif user > computer:
-        print("You Win!")
+        print("You Win!\n")
 
 play_blackjack = True
 
