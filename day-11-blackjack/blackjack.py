@@ -74,9 +74,7 @@ def calculate_score(deck):
     if deck[0] == 10 and deck[1] == 11 or deck[0] == 11 and deck[1] == 10:
         return 0
 
-    current_score = 0
-    for card_value in range(0, len(deck)):
-        current_score += deck[card_value]
+    current_score = sum(deck)
 
     if current_score > 21:
         if 11 in deck:
