@@ -13,7 +13,7 @@ from random import randint
 EASY_LEVEL = 10
 HARD_LEVEL = 5
 
-number_of_guesses = 0
+number_of_turns = 0
 is_game_over = False
 
 def clear_screen_terminal():
@@ -47,8 +47,8 @@ answer = randint(1, 100)
 # Get preference on game difficulty level
 difficulty_level = str(input("Choose a difficulty level. Type 'easy' or 'hard': "))
 
-number_of_guesses = set_game_level(difficulty_level)
-print(f"\nYou will have {number_of_guesses} attempts remaining to guess the number.")
+number_of_turns = set_game_level(difficulty_level)
+print(f"\nYou will have {number_of_turns} attempts remaining to guess the number.")
 
 # Play the game
 while not is_game_over:
@@ -61,10 +61,10 @@ while not is_game_over:
     else:
         print(result)
 
-    number_of_guesses -= 1
+    number_of_turns -= 1
 
-    if number_of_guesses == 0:
+    if number_of_turns == 0:
         is_game_over = True
         print("You've run out of guesses, you lose.")
-    elif number_of_guesses != 0 and not is_game_over:
-        print(f"You have {number_of_guesses} attempts remaining to guess the number.")
+    elif number_of_turns != 0 and not is_game_over:
+        print(f"You have {number_of_turns} attempts remaining to guess the number.")
