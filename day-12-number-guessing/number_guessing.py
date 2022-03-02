@@ -8,7 +8,7 @@
 # If they run out of turns, provide feedback to the player.
 # Include two different difficulty levels (e.g., 10 guesses in easy mode, only 5 guesses in hard mode).
 
-import random
+from random import randint
 
 # Game difficulty level
 EASY_LEVEL = 10
@@ -21,41 +21,44 @@ def clear_screen_terminal():
     """Clears the terminal screen."""
     print("\n" * 100)
 
-def compare(user_guess, random_number):
+def compare(user_guess, answer):
     """Takes in two integers, compare the values & return corresponding result"""
-    if user_guess > random_number:
+    if user_guess > answer:
         return "Too high."
-    elif user_guess < random_number:
+    elif user_guess < answer:
         return "Too low."
     else:
         return 0
+
+def game_level(level):
+    """Takes in a string and returns the number of allowed guesses"""
+    if level == 'easy':
+        return 10
+    else:
+        return 5
 
 clear_screen_terminal()
 
 print("Welcome to the Number Guessing Game!\n")
 print("I'm thinking of a number between 1 and 100.\n")
 
+# Generate random number between 1 and 100
+answer = randint(1, 100)
+
 # Get preference on game difficulty level
 difficulty_level = str(input("Choose a difficulty level. Type 'easy' or 'hard': "))
 
-if difficulty_level == 'easy':
-    number_of_guesses = EASY_LEVEL
-    print(f"\nYou will have {number_of_guesses} attempts remaining to guess the number.")
-else:
-    number_of_guesses = HARD_LEVEL
-    print(f"\nYou will have {number_of_guesses} attempts remaining to guess the number.")
-
-# Generate random number between 1 and 100
-random_number = random.randint(1, 100)
+number_of_guesses = game_level(difficulty_level)
+print(f"\nYou will have {number_of_guesses} attempts remaining to guess the number.")
 
 # Play the game
 while not is_game_over:
     user_guess = int(input("Make a guess: "))
-    result = compare(user_guess, random_number)
+    result = compare(user_guess, answer)
 
     if result == 0:
         is_game_over = True
-        print(f"You got it! The answer is {random_number}.")
+        print(f"You got it! The answer is {answer}.")
     else:
         print(result)
 
