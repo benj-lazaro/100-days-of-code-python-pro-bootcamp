@@ -26,7 +26,7 @@ def check_answer(user_guess, answer):
     else:
         return 0
 
-def game_level(level):
+def set_game_level(level):
     """Takes in a string and returns the number of allowed guesses"""
     if level == 'easy':
         return 10
@@ -44,7 +44,7 @@ answer = randint(1, 100)
 # Get preference on game difficulty level
 difficulty_level = str(input("Choose a difficulty level. Type 'easy' or 'hard': "))
 
-number_of_guesses = game_level(difficulty_level)
+number_of_guesses = set_game_level(difficulty_level)
 print(f"\nYou will have {number_of_guesses} attempts remaining to guess the number.")
 
 # Play the game
