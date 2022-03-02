@@ -18,7 +18,7 @@ def clear_screen_terminal():
     print("\n" * 100)
 
 def check_answer(user_guess, answer):
-    """Takes in two integers, compare the values & return corresponding string feedback"""
+    """Takes in two integers, compare the values & return corresponding feedback"""
     if user_guess > answer:
         return "Too high."
     elif user_guess < answer:
