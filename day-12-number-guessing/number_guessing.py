@@ -10,10 +10,6 @@
 
 from random import randint
 
-# Game difficulty level
-EASY_LEVEL = 10
-HARD_LEVEL = 5
-
 number_of_guesses = 0
 is_game_over = False
 
