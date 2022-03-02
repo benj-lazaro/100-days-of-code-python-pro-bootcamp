@@ -17,8 +17,8 @@ def clear_screen_terminal():
     """Clears the terminal screen."""
     print("\n" * 100)
 
-def compare(user_guess, answer):
-    """Takes in two integers, compare the values & return corresponding result"""
+def check_answer(user_guess, answer):
+    """Takes in two integers, compare the values & return corresponding string feedback"""
     if user_guess > answer:
         return "Too high."
     elif user_guess < answer:
@@ -50,7 +50,7 @@ print(f"\nYou will have {number_of_guesses} attempts remaining to guess the numb
 # Play the game
 while not is_game_over:
     user_guess = int(input("Make a guess: "))
-    result = compare(user_guess, answer)
+    result = check_answer(user_guess, answer)
 
     if result == 0:
         is_game_over = True
