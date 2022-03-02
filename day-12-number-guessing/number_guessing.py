@@ -10,6 +10,9 @@
 
 from random import randint
 
+EASY_LEVEL = 10
+HARD_LEVEL = 5
+
 number_of_guesses = 0
 is_game_over = False
 
@@ -29,9 +32,9 @@ def check_answer(user_guess, answer):
 def set_game_level(level):
     """Takes in a string and returns the number of allowed guesses"""
     if level == 'easy':
-        return 10
+        return EASY_LEVEL
     else:
-        return 5
+        return HARD_LEVEL
 
 clear_screen_terminal()
 
