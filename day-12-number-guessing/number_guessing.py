@@ -46,11 +46,9 @@ answer = randint(1, 100)
 
 # Get preference on game difficulty level
 difficulty_level = str(input("Choose a difficulty level. Type 'easy' or 'hard': "))
-
 number_of_turns = set_game_level(difficulty_level)
 print(f"\nYou will have {number_of_turns} attempts remaining to guess the number.")
 
-# Play the game
 while not is_game_over:
     user_guess = int(input("Make a guess: "))
     result = check_answer(user_guess, answer)
