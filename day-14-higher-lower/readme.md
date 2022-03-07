@@ -6,9 +6,8 @@ The program will:
 * Presents two (2) random items (Instagram personalities) from a list
 * Ask the player to guess which one item has more followers; type 'A' or 'B'
 * Determines which item has more follower count
-* Correct answer will be assigned as item A
-* Player's score is incremented by 1
-* Get another random item from the list & assigned as item B
+* Assign Item B as Item A
+* Get another random dictionary item from the game data
 * Continues to run until the player guessed incorrectly
 * Display the player's final score
 
