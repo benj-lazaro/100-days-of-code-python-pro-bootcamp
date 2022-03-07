@@ -2,6 +2,13 @@ from art import logo, vs
 from game_data import data
 from random import choice
 
+def check_answer(guess, item_1, item_2):
+    "Takes two dictionary item & player's choice & return the correct answer"
+    if item_1['follower_count'] > item_2['follower_count']:
+        return guess == "A"
+    else:
+        return guess == "B"
+
 def clear_screen_and_display_logo():
     """Clears the terminal screen"""
     print("\n" * 100)
@@ -15,7 +22,7 @@ def compare_followers(item_1, item_2):
         return item_2
 
 def format_data(item):
-    """Format dictionary item and return a printable format"""
+    """Takes a dictionary item and return a printable format"""
     name = item['name']
     description = item['description']
     country = item['country']
@@ -45,7 +52,7 @@ while not is_game_over:
         item_2 = get_random_dictionary_item()
 
     # Identify which dictionary item has more follower_count
-    correct_answer = compare_followers(item_1, item_2)
+    # correct_answer = compare_followers(item_1, item_2)
 
     # Display item's name, description & country
     print(f"Compare A: {format_data(item_1)}.")
@@ -55,19 +62,16 @@ while not is_game_over:
     # Ask for player's choice
     player_choice = input("Who has more followers? Type 'A' or 'B': ").upper()
 
-    # Evaluate player choice
-    if player_choice == "A":
-        selected_item = item_1
-    else:
-        selected_item = item_2
+    # Verify player's choice
+    is_player_correct = check_answer(player_choice, item_1, item_2)
 
-    # Check if player's choice is correct
-    if correct_answer['name'] == selected_item['name']:
+    if is_player_correct:
         # Increment player score & display feedback to player
         score += 1
         clear_screen_and_display_logo()
         print(f"\nYou are right. Current score: {score}\n")
-        item_1 = correct_answer
+        # Retain the correct answer as the first item to be compared
+        item_1 = item_1
     else:
         # Inform player got it wrong, display the score & end the game
         clear_screen_and_display_logo()
