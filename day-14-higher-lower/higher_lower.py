@@ -14,6 +14,7 @@ def clear_screen_and_display_logo():
     print("\n" * 100)
     print(logo)
 
+
 def format_data(item):
     """Takes a dictionary item and return a printable format"""
     name = item['name']
@@ -21,9 +22,11 @@ def format_data(item):
     country = item['country']
     return f"{name}, a {description}, from{country}"
 
+
 def get_random_dictionary_item():
     """Returns random dictionary items from game_data module"""
     return choice(data)
+
 
 # Global variables
 score = 0
