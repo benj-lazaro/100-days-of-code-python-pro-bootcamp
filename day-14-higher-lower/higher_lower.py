@@ -14,6 +14,13 @@ def compare_followers(item_1, item_2):
     else:
         return item_2
 
+def format_data(item):
+    """Format dictionary item into a printable format"""
+    name = item['name']
+    description = item['description']
+    country = item['country']
+    return f"{name}, a {description}, from{country}"
+
 def get_random_dictionary_item():
     """Returns random dictionary items from game_data module"""
     return choice(data)
@@ -41,9 +48,9 @@ while not is_game_over:
     correct_answer = compare_followers(item_1, item_2)
 
     # Display item's name, description & country
-    print(f"Compare A: {item_1['name']}, a {item_1['description']}, from {item_1['country']} ")
+    print(f"Compare A: {format_data(item_1)}.")
     print(vs)
-    print(f"Against B: {item_2['name']}, a {item_2['description']}, from {item_2['country']} ")
+    print(f"Against B: {format_data(item_2)}.")
 
     # Ask for player's choice
     player_choice = input("Who has more followers? Type 'A' or 'B': ").upper()
