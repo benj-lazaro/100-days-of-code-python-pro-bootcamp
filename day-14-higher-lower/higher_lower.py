@@ -40,10 +40,11 @@ is_game_over = False
 clear_screen_and_display_logo()
 
 while not is_game_over:
-    # Get random dictionary items from game_data
+    # Get 2 random dictionary items from game_data if playing for the 1st time
     if score == 0:
         item_1 = get_random_dictionary_item()
         item_2 = get_random_dictionary_item()
+    # Otherwise, get 1 random dictionary item from game_data instead
     else:
         item_2 = get_random_dictionary_item()
 
