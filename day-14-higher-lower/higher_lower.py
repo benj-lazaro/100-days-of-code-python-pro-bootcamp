@@ -14,7 +14,7 @@ def compare_followers(item_1, item_2):
     else:
         return item_2
 
-def get_random_item():
+def get_random_dictionary_item():
     """Returns random dictionary items from game_data module"""
     return choice(data)
 
@@ -28,12 +28,16 @@ clear_screen_and_display_logo()
 while not is_game_over:
     # Get random dictionary items from game_data
     if score == 0:
-        item_1 = get_random_item()
-        item_2 = get_random_item()
+        item_1 = get_random_dictionary_item()
+        item_2 = get_random_dictionary_item()
     else:
-        item_2 = get_random_item()
+        item_2 = get_random_dictionary_item()
 
-    # Identify which item has greater follower_count
+    # Check for duplicate entries
+    if item_1 == item_2:
+        item_2 = get_random_dictionary_item()
+
+    # Identify which dictionary item has more follower_count
     correct_answer = compare_followers(item_1, item_2)
 
     # Display item's name, description & country
@@ -44,20 +48,21 @@ while not is_game_over:
     # Ask for player's choice
     player_choice = input("Who has more followers? Type 'A' or 'B': ").upper()
 
+    # Evaluate player choice
     if player_choice == "A":
         selected_item = item_1
     else:
         selected_item = item_2
 
-    # Check player's choice
+    # Check if player's choice is correct
     if correct_answer['name'] == selected_item['name']:
-        # Increment score by 1
+        # Increment player score & display feedback to player
         score += 1
         clear_screen_and_display_logo()
         print(f"\nYou are right. Current score: {score}\n")
         item_1 = correct_answer
     else:
-        # Game over, man!
+        # Inform player got it wrong, display the score & end the game
         clear_screen_and_display_logo()
         print(f"\nSorry, that's wrong. Final score: {score}\n")
         is_game_over = True
