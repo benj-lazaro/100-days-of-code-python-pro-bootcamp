@@ -15,7 +15,7 @@ def compare_followers(item_1, item_2):
         return item_2
 
 def format_data(item):
-    """Format dictionary item into a printable format"""
+    """Format dictionary item and return a printable format"""
     name = item['name']
     description = item['description']
     country = item['country']
