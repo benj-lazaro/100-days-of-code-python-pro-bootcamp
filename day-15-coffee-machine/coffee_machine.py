@@ -97,7 +97,7 @@ def process_coins(order, quarter, dime, nickle, penny):
     order_cost = MENU[order]['cost']
 
     if total_coin_value >= order_cost:
-        change = total_coin_value = order_cost
+        change = total_coin_value - order_cost
         print(f"Here is ${change:.2f} in change.")
         print(f"Here is your {order} ☕. Enjoy!")
         deduct_resources(order)
