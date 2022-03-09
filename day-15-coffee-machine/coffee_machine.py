@@ -38,29 +38,29 @@ def check_resources(order):
     current_coffee = resources['coffee']
 
     if order == "espresso":
-        consumed_water = MENU[order]['ingredients']['water']
-        consumed_coffee = MENU[order]['ingredients']['coffee']
+        required_water = MENU[order]['ingredients']['water']
+        required_coffee = MENU[order]['ingredients']['coffee']
 
-        if current_water < consumed_water:
+        if current_water < required_water:
             print("Sorry there is not enough water.")
             return False
-        elif current_coffee < consumed_coffee:
+        elif current_coffee < required_coffee:
             print("Sorry there is not enough coffee.")
             return False
         else:
             return True
     else:
-        consumed_water = MENU[order]['ingredients']['water']
-        consumed_milk = MENU[order]['ingredients']['milk']
-        consumed_coffee = MENU[order]['ingredients']['coffee']
+        required_water = MENU[order]['ingredients']['water']
+        required_milk = MENU[order]['ingredients']['milk']
+        required_coffee = MENU[order]['ingredients']['coffee']
 
-        if current_water < consumed_water:
+        if current_water < required_water:
             print("Sorry there is not enough water.")
             return False
-        elif current_milk < consumed_milk:
+        elif current_milk < required_milk:
             print("Sorry there is not enough milk.")
             return False
-        elif current_coffee < consumed_coffee:
+        elif current_coffee < required_coffee:
             print("Sorry there is not enough coffee.")
             return False
         else:
@@ -115,7 +115,7 @@ def report_resources():
     print(f"Money: ${current_money}")
 
 
-# CONSTANT variables
+# Constant variables
 PENNY = 0.01
 NICKLE = 0.05
 DIME = 0.10
