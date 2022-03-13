@@ -11,6 +11,7 @@ menu = Menu()
 coffee_maker = CoffeeMaker()
 cash_register = MoneyMachine()
 
+
 while is_coffee_machine_on:
     # Get user's order
     order = str(input(f"What would you like? ({menu.get_items()}): ")).lower()
@@ -18,19 +19,19 @@ while is_coffee_machine_on:
     # Check for existence of preferred hot beverage
     coffee_order = menu.find_drink(order)
 
-    # Check for hidden maintenance commands "report" & "off"
-    if order == "off":
-        # Turn off coffee maker
-        is_coffee_machine_on = False
-    elif order == "report":
-        # Produce report on available resource & profit
-        coffee_maker.report()
-        cash_register.report()
-    # Otherwise, get coffee order
-    elif coffee_order:
-        # Check if resources available to accommodate the order
+    # If ordered beverage is available
+    if coffee_order is not None:
+        # Check if resources are available
         if coffee_maker.is_resource_sufficient(coffee_order):
             # Check if payment is sufficient
             if cash_register.make_payment(coffee_order.cost):
-                # Make ordered coffee drink
+                # Make the ordered beverage
                 coffee_maker.make_coffee(coffee_order)
+    # Otherwise, check for hidden maintenance commands: off & report
+    elif order == "off":
+        # Turn off coffee maker
+        is_coffee_machine_on = False
+    elif order == "report":
+        # Report on available resource & current profit
+        coffee_maker.report()
+        cash_register.report()
