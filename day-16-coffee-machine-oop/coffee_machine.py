@@ -14,7 +14,8 @@ cash_register = MoneyMachine()
 
 while is_coffee_machine_on:
     # Get user's order
-    order = str(input(f"What would you like? ({menu.get_items()}): ")).lower()
+    available_drink = menu.get_items()
+    order = str(input(f"What would you like? ({available_drink}): ")).lower()
 
     # Check for hidden maintenance commands
     if order == "off":
