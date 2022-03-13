@@ -26,6 +26,7 @@ while is_coffee_machine_on:
         # Produce report on available resource & profit
         coffee_maker.report()
         cash_register.report()
+    # Otherwise, get coffee order
     elif coffee_order:
         # Check if resources available to accommodate the order
         if coffee_maker.is_resource_sufficient(coffee_order):
