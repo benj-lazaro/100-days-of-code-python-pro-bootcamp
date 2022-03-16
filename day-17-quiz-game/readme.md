@@ -3,9 +3,9 @@ A command-line True or False Quiz Game
 
 ### What does it do?
 The program will:
-* Ask a question to the user; answerable by True or False
+* Ask a question to the user that is answerable by True or False
 * Informs the user if they got it right or wrong
-* Gives the user a score
+* Give the user a score of 1 for each correct answer
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>

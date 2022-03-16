@@ -1,3 +1,5 @@
+# Blueprint / model of the questions presented in the game
+
 class Question:
 
     def __init__(self, q_text, q_answer):
