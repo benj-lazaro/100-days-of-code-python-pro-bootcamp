@@ -3,7 +3,7 @@ A Turtle based Snake game
 
 ### What does it do?
 The program will:
-* Simply display a non-interactive 3-segment snake body
+* 
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
