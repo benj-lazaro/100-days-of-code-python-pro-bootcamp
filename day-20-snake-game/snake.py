@@ -4,6 +4,12 @@ from turtle import Turtle
 STARTING_POSITION = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
 
+# Snake movements
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
+
 
 class Snake:
 
@@ -32,19 +38,23 @@ class Snake:
         # Moves the snake head forward at the specified distance / paces
         self.head.forward(MOVE_DISTANCE)
 
+    # Defines the methods of arrow-key movement control of the snake
     def up(self):
         """Moves the snake head up"""
-        self.head.setheading(90)
+        if self.head.heading() != DOWN:
+            self.head.setheading(UP)
 
     def down(self):
         """Moves the snake head down"""
-        self.head.setheading(270)
+        if self.head.heading() != UP:
+            self.head.setheading(DOWN)
 
     def left(self):
         """Moves the snake head to the left"""
-        self.head.setheading(180)
+        if self.head.heading() != RIGHT:
+            self.head.setheading(LEFT)
 
     def right(self):
         """Moves the snake head to the right"""
-        self.head.setheading(0)
-
+        if self.head.heading() != LEFT:
+            self.head.setheading(RIGHT)
