@@ -16,14 +16,21 @@ screen.tracer(0)
 # Instantiate an object from Snake class
 snake = Snake()
 
+# Listen for keystrokes (snake controls)
+screen.listen()
+# Bind keystrokes to the corresponding Snake class methods
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.down, "Down")
+screen.onkey(snake.left, "Left")
+screen.onkey(snake.right, "Right")
+
 game_is_on = True
-
 while game_is_on:
-    # Updates the screen to display; moving  the 3-segment starter snake body as a single piece
+    # Refresh the screen to display; moving  the 3-segment starter snake body as a single piece
     screen.update()
-    # Update the screen every 0.1 seconds
+    # Delay screen update for 0.1 seconds
     time.sleep(0.1)
-
+    # Call the .move() method of the Snake class and then move the snake segment
     snake.move()
 
 screen.exitonclick()
