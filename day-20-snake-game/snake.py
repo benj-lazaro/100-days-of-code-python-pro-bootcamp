@@ -39,6 +39,7 @@ class Snake:
         self.head.forward(MOVE_DISTANCE)
 
     # Defines the methods of arrow-key movement control of the snake
+    # Prevent the keys from going back on itself
     def up(self):
         """Moves the snake head up"""
         if self.head.heading() != DOWN:
