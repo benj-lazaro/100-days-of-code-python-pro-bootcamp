@@ -30,7 +30,7 @@ screen.onkey(snake.right, "Right")
 
 game_is_on = True
 while game_is_on:
-    # Refresh the screen to display; moves the 3-segment starter snake body as a single entiry
+    # Refresh the screen to display; moves the 3-segment starter snake body as a single entity
     screen.update()
     # Delay screen update for 0.1 second
     time.sleep(0.1)
