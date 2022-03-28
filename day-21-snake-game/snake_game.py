@@ -1,6 +1,7 @@
 from turtle import Screen
 from snake import Snake
 from food import Food
+from scoreboard import Scoreboard
 import time
 
 # Instantiate object from class Screen
@@ -14,15 +15,18 @@ screen.title("My Snake Game")
 # Call and turn off the tracer() method of the Screen class
 screen.tracer(0)
 
-# Instantiate an object from Snake class
+# Instantiate a starter snake on screen
 snake = Snake()
 
-# Instantiate an object from Food class
+# Instantiate food (i.e. blue dot) on screen
 food = Food()
 
-# Listen for keystrokes (snake controls)
+# Instantiate a scoreboard on screen
+scoreboard = Scoreboard()
+
+# Listen for keystrokes (i.e. snake controls)
 screen.listen()
-# Bind keystrokes to the corresponding Snake class methods
+# Bind arrow keystrokes to the corresponding Snake class methods
 screen.onkey(snake.up, "Up")
 screen.onkey(snake.down, "Down")
 screen.onkey(snake.left, "Left")
@@ -42,6 +46,9 @@ while game_is_on:
     if snake.head.distance(food) < 15:
         # Move food to a new location within teh screen
         food.refresh()
+
+        # Increment score by 1
+        scoreboard.increase_score()
 
 
 screen.exitonclick()
