@@ -22,11 +22,20 @@ class Snake:
     def create_snake(self):
         """Creates a 3-segment starter snake"""
         for position in STARTING_POSITION:
-            new_segment = Turtle("square")
-            new_segment.color("white")
-            new_segment.penup()
-            new_segment.goto(position)
-            self.segments.append(new_segment)
+            self.add_segment(position)
+
+    def add_segment(self, position):
+        """Adds a new segment to the snake body"""
+        new_segment = Turtle("square")
+        new_segment.color("white")
+        new_segment.penup()
+        new_segment.goto(position)
+        self.segments.append(new_segment)
+
+    def extend(self):
+        """Extends the snake body"""
+        # Gets the position of the last element (i.e. snake's tail)
+        self.add_segment(self.segments[-1].position())
 
     def move(self):
         """Moves the starter snake forward"""
@@ -38,8 +47,7 @@ class Snake:
         # Moves the snake head forward at the specified distance / paces
         self.head.forward(MOVE_DISTANCE)
 
-    # Defines the methods of arrow-key movement control of the snake
-    # Prevent the keys from going back on itself
+    # Defines arrow-key movement control of the snake & prevents from going back on itself
     def up(self):
         """Moves the snake head up"""
         if self.head.heading() != DOWN:
