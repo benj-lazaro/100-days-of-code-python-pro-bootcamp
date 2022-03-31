@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 
@@ -18,6 +19,9 @@ l_paddle = Paddle((-350, 0))
 
 # Instantiate a ball object
 ball = Ball()
+
+# Instantiate a scoreboard object
+scoreboard = Scoreboard()
 
 # Screen listen & bind keystrokes for paddle controls
 screen.listen()
@@ -51,10 +55,13 @@ while game_is_on:
     # Detect when right paddle missed hitting the ball
     if ball.xcor() > 380:
         ball.reset_position()
+        scoreboard.l_point()
 
 # Detect when right paddle missed hitting the ball
     if ball.xcor() < -380:
         ball.reset_position()
+        scoreboard.r_point()
+
 
 # Terminates the screen when clicked
 screen.exitonclick()
