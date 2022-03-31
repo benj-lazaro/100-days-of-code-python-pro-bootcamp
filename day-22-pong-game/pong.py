@@ -1,5 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
+from ball import Ball
+import time
 
 
 # Create a screen with black background color & a dimension of 800x600
@@ -14,21 +16,34 @@ screen.tracer(0)
 r_paddle = Paddle((350, 0))
 l_paddle = Paddle((-350, 0))
 
+# Instantiate a ball object
+ball = Ball()
+
 # Screen listen & bind keystrokes for paddle controls
 screen.listen()
-
 # Set right paddle controls
 screen.onkey(r_paddle.up, "Up")
 screen.onkey(r_paddle.down, "Down")
-
 # Set left paddle controls
 screen.onkey(l_paddle.up, "w")
 screen.onkey(l_paddle.down, "s")
 
 game_is_on = True
 while game_is_on:
-    # Updates the screen; in conjunction with .tracer() method
+    # Put the screen to sleep for 0.1 seconds to slow down the ball movement
+    time.sleep(0.1)
+
+    # Update the screen; in conjunction with .tracer() method
     screen.update()
+
+    # Move the ball using its initial coordinates
+    ball.move()
+
+    # Detect ball collision with the top or bottom wall
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        # Bounce the ball
+        ball.bounce()
+
 
 # Terminates the screen when clicked
 screen.exitonclick()
