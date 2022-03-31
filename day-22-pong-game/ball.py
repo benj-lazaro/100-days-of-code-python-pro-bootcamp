@@ -10,6 +10,7 @@ class Ball(Turtle):
         self.penup()
         self.x_move = 10
         self.y_move = 10
+        self.move_speed = 0.1
 
     def move(self):
         """Moves the ball to the top-right corner of the screen by 10 pixels at a time"""
@@ -24,8 +25,11 @@ class Ball(Turtle):
     def bounce_x(self):
         """Moves the ball to its reverse direction along the x-axis"""
         self.x_move *= -1
+        # Speeds up movement speed by 0.9 every time the ball touches the paddle
+        self.move_speed *= 0.9
 
     def reset_position(self):
         """Resets the position of the ball back to its initial state"""
         self.goto(0, 0)
+        self.move_speed = 0.1
         self.bounce_x()

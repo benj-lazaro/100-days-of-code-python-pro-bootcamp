@@ -35,7 +35,7 @@ screen.onkey(l_paddle.down, "s")
 game_is_on = True
 while game_is_on:
     # Put the screen to sleep for 0.1 seconds to slow down the ball movement
-    time.sleep(0.1)
+    time.sleep(ball.move_speed)
 
     # Update the screen; in conjunction with .tracer() method
     screen.update()
