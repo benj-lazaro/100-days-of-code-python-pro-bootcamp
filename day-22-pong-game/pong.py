@@ -1,18 +1,5 @@
-from turtle import Screen, Turtle
-
-
-def up():
-    """Moves the paddle up by 20 paces"""
-    new_y = paddle.ycor() + 20
-    paddle.goto(paddle.xcor(), new_y)
-    paddle.speed("fastest")
-
-
-def down():
-    """Moves the paddle down by 20 paces"""
-    new_y = paddle.ycor() - 20
-    paddle.goto(paddle.xcor(), new_y)
-    paddle.speed("fastest")
+from turtle import Screen
+from paddle import Paddle
 
 
 # Create a screen with black background color & a dimension of 800x600
@@ -20,23 +7,27 @@ screen = Screen()
 screen.bgcolor("black")
 screen.setup(width=800, height=600)
 screen.title("Pong")
+# Turn off Turtle cursor animation
 screen.tracer(0)
 
-# Set up the right-side white colored paddle (20x100) located at position 250 x 0
-paddle = Turtle()
-paddle.shape("square")
-paddle.color("white")
-paddle.shapesize(stretch_wid=5, stretch_len=1)
-paddle.penup()
-paddle.setposition(x=350, y=0)
+# Instantiate paddle objects & pass their starter screen coordinates
+r_paddle = Paddle((350, 0))
+l_paddle = Paddle((-350, 0))
 
-# Screen listen to keystrokes for paddle controls
+# Screen listen & bind keystrokes for paddle controls
 screen.listen()
-screen.onkey(up, "Up")
-screen.onkey(down, "Down")
+
+# Set right paddle controls
+screen.onkey(r_paddle.up, "Up")
+screen.onkey(r_paddle.down, "Down")
+
+# Set left paddle controls
+screen.onkey(l_paddle.up, "w")
+screen.onkey(l_paddle.down, "s")
 
 game_is_on = True
 while game_is_on:
+    # Updates the screen; in conjunction with .tracer() method
     screen.update()
 
 # Terminates the screen when clicked
