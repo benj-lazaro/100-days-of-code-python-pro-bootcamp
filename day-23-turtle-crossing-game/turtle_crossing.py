@@ -27,3 +27,10 @@ while game_is_on:
     # Generate random cars & move them from the right to left side of the screen
     car_manager.create_car()
     car_manager.move_cars()
+
+    # Detect collision of player (turtle) with car
+    for car in car_manager.all_cars:
+        if car.distance(player) < 20:
+            game_is_on = False
+
+screen.exitonclick()
