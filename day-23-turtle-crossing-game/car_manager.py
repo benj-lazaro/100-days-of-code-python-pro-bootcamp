@@ -10,6 +10,7 @@ class CarManager:
 
     def __init__(self):
         self.all_cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
 
     def create_car(self):
         """Creates a car with random color & starting position on the Y-axis of the screen"""
@@ -30,4 +31,9 @@ class CarManager:
     def move_cars(self):
         """Moves a car from the right to the left side of the screen"""
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
+
+    def level_up(self):
+        """Increases the speed of the car after the player levels up"""
+        self.car_speed += MOVE_INCREMENT
+
