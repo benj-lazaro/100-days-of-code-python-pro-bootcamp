@@ -11,7 +11,10 @@ The Snake game v2 will:
 * Keeps track, store & retrieve the high score from an external file (data.txt)
 
 The Mail Merge will:
-* Ask the player to control the snake using arrow keys
+* Read the names from invited_names.txt
+* Update the contents of the starting_letter.txt file
+* Insert individual names into the letter
+* Write the update content into separate files using the invitee's name as file name
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
