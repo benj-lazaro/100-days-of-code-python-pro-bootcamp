@@ -9,8 +9,10 @@ Squirrel Data will:
 * Create a new .CSV file & write the Dataframe
 
 The US States games will:
-* Ask the player to name the 50 states of the US
+* Ask the player to type the name of 50 states of the US
 * Correct answers are added (overlaid) over the US map
+* Discretely type "Exit" to exit the game
+* Generate a .CSV for the state(s) that were not guessed
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
