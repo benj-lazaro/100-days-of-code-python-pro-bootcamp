@@ -1,0 +1,15 @@
+## US States Game v2
+* US States Game v2 using list comprehension
+
+### What does it do?
+The US States games will:
+* Ask the player to type the name of 50 states of the US
+* Correct answers are added (overlaid) over the US map
+* Discretely type "Exit" to exit the game
+* Generate a .CSV for the state(s) that were not guessed
+
+### How does it work?
+On the command-line (or terminal), type the following:<br>
+* python3 <b>us_states_game.py</b>
+
+<b>NOTE:</b> It is assumed that the <b>Python 3 interpreter</b> & <b>Pandas</b> library have already been installed and imported, respectively on your computer.
