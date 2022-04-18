@@ -22,26 +22,26 @@ button.pack()
 
 # Entries
 entry = Entry(width=30)
-# Add some text to begin with
+# Add some text to begin with using the parameter variable "string"
 entry.insert(END, string="Some text to begin with.")
 # Gets text in entry
 print(entry.get())
 entry.pack()
 
-# Text
+# Textbox allows multiple lines of text
 text = Text(height=5, width=30)
-# Puts cursor in textbox.
+# Puts the mouse cursor within the textbox.
 text.focus()
 # Adds some text to begin with.
 text.insert(END, "Example of multi-line text entry.")
-# Get's current value in textbox at line 1, character 0
+# Gets the current value in textbox at line 1, character 0
 print(text.get("1.0", END))
 text.pack()
 
 
 # Spinbox
 def spinbox_used():
-    # gets the current value in spinbox.
+    # Gets the current value in spinbox.
     print(spinbox.get())
 
 
@@ -49,7 +49,7 @@ spinbox = Spinbox(from_=0, to=10, width=5, command=spinbox_used)
 spinbox.pack()
 
 
-# Scale
+# Scale or slider
 # Called with current scale value.
 def scale_used(value):
     print(value)
@@ -93,8 +93,12 @@ def listbox_used(event):
 
 listbox = Listbox(height=4)
 fruits = ["Apple", "Pear", "Orange", "Banana"]
+
 for item in fruits:
     listbox.insert(fruits.index(item), item)
+
 listbox.bind("<<ListboxSelect>>", listbox_used)
 listbox.pack()
+
+# Keeps the window open until manually closed
 window.mainloop()
