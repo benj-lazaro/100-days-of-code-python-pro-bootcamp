@@ -7,15 +7,28 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Courier"
-WORK_MIN = 1
+WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 
 # ---------------------------- GLOBAL VARIABLES ------------------------------- #
 reps = 0
+timer = None
 
 
 # ---------------------------- TIMER RESET ------------------------------- #
+def reset_timer():
+    # Stops the countdown timer
+    window.after_cancel(timer)
+    # Resets the timer_text, title_label & check_marks widgets to their original state
+    canvas.itemconfig(timer_text, text="00:00")
+    title_label.config(text="Timer")
+    check_marks.config(text="")
+
+    # Reset the repetition count back to 0
+    global reps
+    reps = 0
+
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 def start_timer():
@@ -43,7 +56,7 @@ def start_timer():
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 def count_down(count):
-    """Updates the text value of the canvas text (over the tomato image)"""
+    """Updates the value of the canvas text (over the tomato image)"""
     # Compute the minutes of the count value, return the largest whole number that is <= the float number
     count_min = math.floor(count / 60)
 
@@ -58,8 +71,9 @@ def count_down(count):
 
     # To prevent from counting down to the negative value
     if count > 0:
-        # Calls itself after 1 second, pass count - 1 as parameter & loop through the function itself
-        window.after(1000, count_down, count - 1)
+        global timer
+        # Calls the function itself after 1 second, pass corresponding time as a parameter value
+        timer = window.after(1000, count_down, count - 1)
     else:
         # Once done counting down, call the start_timer() again for the corresponding breaks between sessions
         start_timer()
@@ -90,7 +104,6 @@ tomato_img = PhotoImage(file="tomato.png")
 canvas.create_image(100, 112, image=tomato_img)
 # Add some text over the tomato image
 timer_text = canvas.create_text(100, 135, text="00:00", fill="white", font=(FONT_NAME, 28, "bold"))
-
 canvas.grid(column=1, row=1)
 
 # Add a start button widget
@@ -98,7 +111,7 @@ start_button = Button(text="Start", highlightthickness=0, command=start_timer)
 start_button.grid(column=0, row=2)
 
 # Add a reset button widget
-reset_button = Button(text="Reset", highlightthickness=0)
+reset_button = Button(text="Reset", highlightthickness=0, command=reset_timer)
 reset_button.grid(column=2, row=2)
 
 # Add a check mark widget
