@@ -25,8 +25,13 @@ def count_down(count):
     """Updates the text value of the canvas text (over the tomato image)"""
     # Compute the minutes of the count value, return the largest whole number that is <= the float number
     count_min = math.floor(count / 60)
+
     # Compute the seconds of the count value
     count_sec = count % 60
+    # Use Python's dynamic typing to convert the 0 second to 00 format
+    if count_sec < 10:
+        count_sec = f"0{count_sec}"
+
     # Display the countdown timer in the minutes:seconds format
     canvas.itemconfig(timer_text, text=f"{count_min}:{count_sec}")
 
