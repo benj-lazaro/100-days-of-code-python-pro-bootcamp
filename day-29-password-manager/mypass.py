@@ -1,8 +1,29 @@
 from tkinter import *
 
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
+
+def save():
+    """Save and append user entry into a text file"""
+    # Fetch data from entry widgets
+    website_data = website_entry.get()
+    email_username_data = email_username_entry.get()
+    password_data = password_entry.get()
+
+    # Format collected data
+    data_entry = f"{website_data} | {email_username_data} | {password_data}\n"
+
+    # Append & write formatted data to file data.txt
+    with open("data.txt", mode="a") as data_file:
+        data_file.write(data_entry)
+        # Clear the entry widgets except for the username/email
+        website_entry.delete(0, END)
+        password_entry.delete(0, END)
+        # Refocus cursor back to the website entry widget
+        website_entry.focus()
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -31,9 +52,13 @@ password_label.grid(column=0, row=3)
 # Entry widgets
 website_entry = Entry(width=35)
 website_entry.grid(column=1, row=1, columnspan=2)
+website_entry.focus()
 
 email_username_entry = Entry(width=35)
 email_username_entry.grid(column=1, row=2, columnspan=2)
+# END = constant that places the cursor at the end of the inserted text
+# 0 = a constant that places the cursor at the beginning of the inserted text
+email_username_entry.insert(0, "email@test.com")
 
 password_entry = Entry(width=26)
 password_entry.grid(column=1, row=3)
@@ -42,7 +67,7 @@ password_entry.grid(column=1, row=3)
 generate_password_button = Button(text="Generate", width=5, pady=0)
 generate_password_button.grid(column=2, row=3)
 
-add_user_entry_button = Button(text="Add", width=32, pady=0)
+add_user_entry_button = Button(text="Add", width=32, pady=0, command=save)
 add_user_entry_button.grid(column=1, row=4, columnspan=2)
 
 window.mainloop()
