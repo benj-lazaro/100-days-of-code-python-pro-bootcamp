@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -12,17 +13,28 @@ def save():
     email_username_data = email_username_entry.get()
     password_data = password_entry.get()
 
-    # Format collected data
-    data_entry = f"{website_data} | {email_username_data} | {password_data}\n"
+    # Check for empty fields
+    if len(website_data) == 0 or len(password_data) == 0:
+        messagebox.showinfo(title='Oops', message="Please don't leave fields empty!")
+    else:
+        # Show a message box to verify data to be saved
+        is_ok = messagebox.askokcancel(title=website_data, message=f"These are the details entered: \n "
+                                                                   f"Email: {email_username_data} \n "
+                                                                   f"Password: {password_data} \n"
+                                                                   f"Is it ok to save?")
 
-    # Append & write formatted data to file data.txt
-    with open("data.txt", mode="a") as data_file:
-        data_file.write(data_entry)
-        # Clear the entry widgets except for the username/email
-        website_entry.delete(0, END)
-        password_entry.delete(0, END)
-        # Refocus cursor back to the website entry widget
-        website_entry.focus()
+        if is_ok:
+            # Format collected data
+            data_entry = f"{website_data} | {email_username_data} | {password_data}\n"
+
+            # Append & write formatted data to the file data.txt
+            with open("data.txt", mode="a") as data_file:
+                data_file.write(data_entry)
+                # Clear the entry widgets except for the username/email
+                website_entry.delete(0, END)
+                password_entry.delete(0, END)
+                # Refocus cursor back to the website entry widget
+                website_entry.focus()
 
 
 # ---------------------------- UI SETUP ------------------------------- #
