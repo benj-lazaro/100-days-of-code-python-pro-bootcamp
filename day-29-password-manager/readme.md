@@ -6,8 +6,9 @@ The Password Manager will:
 * Ask for the name of a website
 * Ask for the registered email address or username
 * Ask for the registered password or offer to generate a complex and long password
-* Ask to store provided information
-* Stores the information to a text file upon confirmation
+* Computer generated password is automatically copied to the host OS clipboard
+* Writes the created credentials to a text file (local offline storage) 
+* Check and inform the user of empty field entries
 
 
 ### How does it work?
