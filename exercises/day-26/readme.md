@@ -1,5 +1,5 @@
 ## Day 26 Exercises
-Day 25 Python 3 exercises
+Day 26 Python 3 exercises
 
 ### Program descriptions
 * 01-squared_numbers.py = List of squared numbers using list comprehension
