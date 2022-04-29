@@ -4,6 +4,7 @@ from random import choice, randint, shuffle
 import pyperclip
 import json
 
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 
@@ -79,6 +80,35 @@ def save():
             website_entry.focus()
 
 
+# ---------------------------- FIND PASSWORD ------------------------------- #
+
+
+def find_password():
+    """Looks up for the password from the data.json file"""
+    website = website_entry.get()
+
+    if len(website) == 0:
+        # Inform user not to leave the fields empty via MessageBox widget
+        messagebox.showinfo(title='Oops', message="Nothing To Search.")
+    else:
+        try:
+            # Open the existing data.json file
+            with open("data.json", "r") as data_file:
+                # Load current contents into the variable data
+                data = json.load(data_file)
+        except FileNotFoundError:
+            messagebox.showinfo(title='Error', message="No Data File Found.")
+        else:
+            # Otherwise, search for entry in data.json
+            if website in data:
+                email = data[website]["email"]
+                password = data[website]["password"]
+                messagebox.showinfo(title=website, message=f"Email: {email}\n"
+                                                           f"Password: {password}")
+            else:
+                messagebox.showinfo(title="Error", message=f"No details for {website} exists.")
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 # Setup window
@@ -104,8 +134,8 @@ password_label = Label(text="Password:")
 password_label.grid(column=0, row=3)
 
 # Entry widgets
-website_entry = Entry(width=35)
-website_entry.grid(column=1, row=1, columnspan=2)
+website_entry = Entry(width=26)
+website_entry.grid(column=1, row=1)
 website_entry.focus()
 
 email_username_entry = Entry(width=35)
@@ -118,6 +148,9 @@ password_entry = Entry(width=26)
 password_entry.grid(column=1, row=3)
 
 # Button widgets
+search_button = Button(text="Search", width=5, pady=0, command=find_password)
+search_button.grid(column=2, row=1)
+
 generate_password_button = Button(text="Generate", width=5, pady=0, command=generate_password)
 generate_password_button.grid(column=2, row=3)
 
