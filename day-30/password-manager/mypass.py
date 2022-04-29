@@ -42,7 +42,7 @@ def save():
     email = email_username_entry.get()
     password = password_entry.get()
 
-    # Format of the JSON data file
+    # Format template of the JSON data file
     new_data = {
         website: {
             "email": email,
@@ -52,22 +52,30 @@ def save():
 
     # Check for empty fields
     if len(website) == 0 or len(password) == 0:
+        # Inform user not to leave the fields empty via MessageBox widget
         messagebox.showinfo(title='Oops', message="Please don't leave fields empty!")
     else:
-        # Write new entry to a JSON file
-        with open("data.json", "r") as data_file:
-            # Load old data from the JSON file & store it in a variable as a dictionary
-            data = json.load(data_file)
-            # Update the contents of the dictionary by appending the new data
+        try:
+            # Open the existing data.json file
+            with open("data.json", "r") as data_file:
+                # Load current contents into the variable data
+                data = json.load(data_file)
+        except FileNotFoundError:
+            # Create a new data.json if it doesn't exist
+            with open("data.json", "w") as data_file:
+                # Save the new entry into the data.json file
+                json.dump(new_data, data_file, indent=4)
+        else:
+            # Update the contents of data.json saved w/in the variable data
             data.update(new_data)
-
-        with open("data.json", "w") as data_file:
-            # Save / write the changes into the JSON file
-            json.dump(data, data_file, indent=4)
-
-            # Clear the widget fields & refocus cursor back to the Website: Entry widget
+            # Open data.json to save the contents of the variable data
+            with open("data.json", "w") as data_file:
+                json.dump(data, data_file, indent=4)
+        finally:
+            # Clear the Entry widgets Website: & Password:
             website_entry.delete(0, END)
             password_entry.delete(0, END)
+            # Refocus the cursor back to the Entry widget Website:
             website_entry.focus()
 
 
