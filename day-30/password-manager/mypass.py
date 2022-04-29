@@ -55,13 +55,13 @@ def save():
         messagebox.showinfo(title='Oops', message="Please don't leave fields empty!")
     else:
         # Write new entry to a JSON file
-        with open("data.json", mode="r") as data_file:
+        with open("data.json", "r") as data_file:
             # Load old data from the JSON file & store it in a variable as a dictionary
             data = json.load(data_file)
             # Update the contents of the dictionary by appending the new data
             data.update(new_data)
 
-        with open("data.json", mode="w") as data_file:
+        with open("data.json", "w") as data_file:
             # Save / write the changes into the JSON file
             json.dump(data, data_file, indent=4)
 
