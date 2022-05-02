@@ -5,13 +5,24 @@ import random
 # Constant variable(s)
 BACKGROUND_COLOR = "#B1DDC6"
 
-# Read the CSV file as a DataFrame, convert it into a dictionary & orient it as records
-data = pandas.read_csv("data/french_words.csv")
-to_learn = data.to_dict(orient="records")
+# Global variable(s)
+current_card = {}
+to_learn = {}
+
+try:
+    # Read the CSV file on French words that the user has yet to learn based on previous session
+    data = pandas.read_csv("data/words_to_learn.csv")
+except FileNotFoundError:
+    # Read the following CSV if the app is run the first time
+    original_data = pandas.read_csv("data/french_words.csv")
+    to_learn = original_data.to_dict(orient="records")
+else:
+    # Convert the CSV into a dictionary & stored as a list of dictionary items
+    to_learn = data.to_dict(orient="records")
 
 
 def next_card():
-    """Pick a random French word from the imported CSV file & store it as a dictionary"""
+    """Pick a random French word from the imported CSV file"""
     global current_card, flip_timer
 
     # Cancel/reset the 3 seconds delay timer before picking a new French word
@@ -34,8 +45,16 @@ def flip_card():
     canvas.itemconfig(card_background, image=card_back_img)
 
 
-# Stores the current French word
-current_card = {}
+def is_known():
+    """Remove the current French word from the list of dictionary items & save progress"""
+    to_learn.remove(current_card)
+
+    # Store French words that is yet to learn as a CSV file
+    # Remove the unintended index number bug that gets appended to the CSV content at every iteration
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("data/words_to_learn.csv", index=False)
+    next_card()
+
 
 # Set up the window
 window = Tk()
@@ -61,7 +80,7 @@ unknown_button = Button(image=cross_image, highlightthickness=0, command=next_ca
 unknown_button.grid(row=1, column=0)
 
 check_image = PhotoImage(file="images/right.png")
-known_button = Button(image=check_image, highlightthickness=0, command=next_card)
+known_button = Button(image=check_image, highlightthickness=0, command=is_known)
 known_button.grid(row=1, column=1)
 
 # Load the 1st random French word from the imported CSV file
