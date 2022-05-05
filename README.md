@@ -1,5 +1,5 @@
 # 100 Days Of Code Challenge
-* A 100 days documented journey of learning and coding in <b>Python 3</b>.
+A 100 days documented journey of learning and coding in <b>Python 3</b>.
 
 ## What is it?
 * A challenge to dedicate an hour a day to learn and code projects in <b>Python 3</b>.
