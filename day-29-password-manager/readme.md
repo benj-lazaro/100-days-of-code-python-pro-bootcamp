@@ -15,4 +15,4 @@ The Password Manager will:
 On the command-line (or terminal), type the following:<br>
 * python3 <b>mypass.py</b>
 
-<b>NOTE:</b> It is assumed that the <b>Python 3 interpreter</b> & <b>Pandas</b> library have already been installed and imported, respectively on your computer.
+<b>NOTE:</b> It is assumed that the <b>Python 3 interpreter</b> had already been installed on your computer.
