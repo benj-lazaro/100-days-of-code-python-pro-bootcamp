@@ -35,7 +35,7 @@ if today == 0:
     read_quote_file()
     quote_of_the_day = random.choice(quote_list)
     # Construct email subject & message content
-    email_message = f"Subject: Quote Of The Day... \n\n{quote_of_the_day}"
+    email_message = f"Subject: Monday Motivation... \n\n{quote_of_the_day}"
 
     # Access email account & then send message
     with smtplib.SMTP(SMTP_SERVER) as connection:
