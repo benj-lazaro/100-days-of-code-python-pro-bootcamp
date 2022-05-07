@@ -30,7 +30,7 @@ now = dt.datetime.now()
 today = now.weekday()
 
 # Check if today is Monday (0)
-if today == 5:
+if today == 0:
     # Open quote file & pick a random quote
     read_quote_file()
     quote_of_the_day = random.choice(quote_list)
