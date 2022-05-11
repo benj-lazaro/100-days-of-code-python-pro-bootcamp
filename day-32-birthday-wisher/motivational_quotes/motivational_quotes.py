@@ -19,7 +19,7 @@ def read_quote_file():
     with open(QUOTES_FILE) as file:
         quotes = file.readlines()
 
-    # Read each quote & strip the \n character at the end
+    # Read each quote & strip the \n character at the end of each line
     for quote in quotes:
         stripped_quote = quote.strip()
         quote_list.append(stripped_quote)
