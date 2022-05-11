@@ -29,8 +29,11 @@ def read_quote_file():
 def send_inspirational_msg():
     """Send Inspiration Message via SMTP"""
     with smtplib.SMTP(SMTP_SERVER) as connection:
+        # Establish a TLS connection
         connection.starttls()
+        # Login using user credentials
         connection.login(user=SENDER_EMAIL, password=SENDER_EMAIL_PASSWORD)
+        # Send email to intended recipient
         connection.sendmail(
             from_addr=SENDER_EMAIL,
             to_addrs=RECIPIENT_EMAIL,
