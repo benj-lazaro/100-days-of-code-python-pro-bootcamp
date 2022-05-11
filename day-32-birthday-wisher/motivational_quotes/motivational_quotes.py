@@ -8,7 +8,8 @@ SMTP_SERVER = "smtp.gmail.com"
 SENDER_EMAIL = "blank.slate.acct"
 SENDER_EMAIL_PASSWORD = "password12345"
 RECIPIENT_EMAIL = "test.dummy@yahoo.com"
-DAY_TO_SEND = 0     # 0 = Monday, 6 = Sunday
+# Note: 0 = Monday, 6 = Sunday
+DAY_TO_SEND = 0
 
 # Global Variable(s)
 email_message = ""
