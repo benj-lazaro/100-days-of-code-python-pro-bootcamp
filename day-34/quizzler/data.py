@@ -4,5 +4,5 @@ import requests
 response = requests.get("https://opentdb.com/api.php?amount=10&type=boolean")
 response.raise_for_status()
 
-# Access non-hardcoded questions
+# Get the questions from the received response
 question_data = response.json()["results"]
