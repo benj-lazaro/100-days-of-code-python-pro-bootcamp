@@ -6,4 +6,3 @@ response.raise_for_status()
 
 # Access non-hardcoded questions
 question_data = response.json()["results"]
-
