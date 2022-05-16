@@ -5,6 +5,7 @@
 The ISS Overhead app will:
 * Access the ISS (International Space Station) Current Location API (http://api.open-notify.org/iss-now.json)
 * Requests for the current (real-time) latitude & longitude information of the ISS in JSON format
+* Sends an email when the ISS is within the user's current location and at nighttime
 
 The Kanye West Quotes Generator app will:
 * Access the Kanye Rest API (https://api.kanye.rest) API
