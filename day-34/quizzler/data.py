@@ -4,6 +4,7 @@ import requests
 parameters = {
     "amount": 10,
     "type": "boolean",
+    "category": 18,
 }
 
 # Access the Open Trivia DB API & pass specific parameters
