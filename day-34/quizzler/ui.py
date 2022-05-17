@@ -24,6 +24,7 @@ class QuizInterface:
                                                      fill=THEME_COLOR,
                                                      font=("Arial", 20, "italic"))
         self.canvas.config(bg="white", highlightthickness=0)
+        # Add 50px padding on the Y-axis to evenly space the top & bottom
         self.canvas.grid(column=0, row=1, columnspan=2, pady=50)
 
         # Set up the Buttons widgets
