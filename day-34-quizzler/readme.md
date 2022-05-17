@@ -4,6 +4,9 @@
 ### What does it do?
 The Quizzler API app will:
 * Access the Open Trivia DB (https://opentdb.com/) to get trivia questions 
+* Retrieve 10 random questions from the API
+* Ask the user to press the Green button for True and Red button for False
+* Records each correct answer
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
