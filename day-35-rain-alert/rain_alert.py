@@ -1,21 +1,18 @@
 import requests
-import smtplib
+import os
+from twilio.rest import Client
 
 # Constant Variable(s)
 OWM_API_ENDPOINT = "https://api.openweathermap.org/data/2.5/onecall"
 MY_LATITUDE = 14.599512
 MY_LONGITUDE = 120.984222
-MY_API_KEY = "qwertyuiop1234567890zxcvbnm,./"
+MY_API_KEY = os.environ['OWM_API_KEY']
 MY_PARAMETERS = {
     "lat": MY_LATITUDE,
     "lon": MY_LONGITUDE,
     "appid": MY_API_KEY,
     "exclude": "current,minutely,daily"
 }
-SMTP_SERVER = "smtp.gmail.com"
-SENDER_EMAIL = "test.dummy@gmail.com"
-SENDER_EMAIL_PASSWORD = "expectingmypasswordaintya?"
-RECIPIENT_EMAIL = "test.dummy@gmail.com"
 
 # Global Variable(s)
 will_it_rain = False
@@ -37,15 +34,15 @@ for hour_data in weather_slice:
     if int(condition_code) < 700:
         will_it_rain = True
 
-# NOTE: Instead of using Twilio API (due to privacy concerns), switched to using SMTP instead
 if will_it_rain:
-    message = "It's going to rain today!\nRemember to bring an umbrella."
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
 
-    with smtplib.SMTP(SMTP_SERVER) as connection:
-        connection.starttls()
-        connection.login(user=SENDER_EMAIL, password=SENDER_EMAIL_PASSWORD)
-        connection.sendmail(
-            from_addr=SENDER_EMAIL,
-            to_addrs=RECIPIENT_EMAIL,
-            msg=f"Subject: Weather Update... \n\n{message}"
-        )
+    message = client.messages.create(
+        body="It's going to rain today! Remember to bring an umbrella.",
+        from_="+15169089084",
+        to="tee_hee_hee"
+    )
+
+    print(message.status)
