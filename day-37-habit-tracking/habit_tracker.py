@@ -45,7 +45,7 @@ PIXELA_POST_PIXEL_ENDPOINT = f"{PIXELA_API_ENDPOINT}/{USER_NAME}/graphs/{PIXELA_
 # To get a date of a specified day
 # specific_day = datetime(year=1998, month=9, day=1)
 
-# Get current date in YYYYMMDD format (https://www.w3schools.com/python/python_datetime.aspm)
+# Get current date in YYYYMMDD format (https://www.w3schools.com/python/python_datetime.asp)
 today = datetime.now()
 current_date = today.strftime("%Y%m%d")
 
