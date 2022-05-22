@@ -2,7 +2,6 @@ import requests
 from flight_search import FlightSearch
 
 SHEETY_API_ENDPOINT = "https://api.sheety.co/9d844e80dc5b4da389794beb1cf9354b/flightDeals/prices"
-SHEETY_BEARER_TOKEN = "Bearer VGhpcyBpcyBhIHRlc3Qgb2YgdGhlIFBoaWxpcHBpbmUgQnJvYXNjYXN0IFN5c3RlbQ=="
 
 response = requests.get(url=SHEETY_API_ENDPOINT)
 response.raise_for_status()
