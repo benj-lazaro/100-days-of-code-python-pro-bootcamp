@@ -9,6 +9,6 @@ The Flight Deals app will:
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
-* python3 <b>flight_daels.py</b>
+* python3 <b>flight_deals.py</b>
 
 <b>NOTE:</b> It is assumed that the <b>Python 3 interpreter</b> had already been installed on your computer.
