@@ -5,7 +5,7 @@
 The Flight Deals app will:
 * Check for cheap flights on chosen destinations via Tequila Kiwi's Flight API
 * Retrieve flight rates and compare with the allocated budget written on the spreadsheet 
-* Notify user via SMS via Twilio API if a cheap flight is found
+* Notify user via SMS via Twilio API and email if a cheap flight is found
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
