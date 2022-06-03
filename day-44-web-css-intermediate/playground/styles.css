@@ -1,26 +1,35 @@
+body {
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    height: 300px;
+    width: 300px;
+    background-color: grey;
+}
+
 .red {
     height: 100px;
     width: 100px;
     background-color: red;
-    display: inline-block;
-    position: relative;
-    left: 213px;
+    position: absolute;
+    right: 0;
 }
 
 .blue {
     height: 100px;
     width: 100px;
     background-color: blue;
-    display: inline-block;
-    position: relative;
-    right: 100px;
+    position: absolute;
+    left: 100px;
+    top: 0;
 }
 
 .yellow {
     height: 100px;
     width: 100px;
     background-color: yellow;
-    display: inline-block;
-    position: relative;
-    right: 100px;
+    position: fixed;
+    top: 0;
 }
