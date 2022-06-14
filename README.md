@@ -5,10 +5,9 @@ A 100 days documented journey of learning and coding in <b>Python 3</b>.
 * A challenge to dedicate an hour a day to learn and code projects in <b>Python 3</b>.
 * Based on the <b>100 Days of Code: The Complete Python Pro Bootcamp</b> course of <b>Dr. Angela Yu</b> available in <b>Udemy</b>.
 
-### Built-in & 3rd Party Libraries/Modules:
-* Python built-in libraries
+### Libraries and Modules:
+* Python 3 Standard Library including TKinter
 * BeautifulSoup
-* TKinter
 * Pandas
 
 ### 3rd Party APIs:
