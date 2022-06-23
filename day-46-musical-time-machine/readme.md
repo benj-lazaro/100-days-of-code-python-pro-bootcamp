@@ -5,7 +5,8 @@
 The Musical Time Machine app will:
 * Ask for the date that the user would like to travel to in the format YYYY-MM-DD
 * Access Billboard's Top 100 for that selected time period using the URL https://www.billboard.com/charts/hot-100/YYYY-MM-DD
-* Use BeautifulSoup to scrape the web page for the Top 100 song titles & save it on a list
+* Use BeautifulSoup to scrape the web page for the Top 100 song titles
+* Creates a new playlist and save the selected song titles
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
