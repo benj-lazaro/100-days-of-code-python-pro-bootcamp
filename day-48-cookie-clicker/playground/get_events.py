@@ -18,4 +18,8 @@ for n in range(len(event_times)):
         "name": event_names[n].text,
     }
 
+# Print retrieved data on console
 print(events)
+
+# Terminate Chrome browser
+driver.quit()
