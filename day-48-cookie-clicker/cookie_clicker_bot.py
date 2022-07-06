@@ -25,16 +25,38 @@ english_language = driver.find_element(By.CSS_SELECTOR, "div #langSelect-EN")
 english_language.click()
 
 big_cookie = driver.find_element(By.ID, "bigCookie")
+time.sleep(SHORT_WAIT_TIME)
 
-while True:
+item_prices = []
+all_prices = driver.find_elements(By.CSS_SELECTOR, "div .locked")
+
+# Test clicks
+for _ in range(0, 20):
     big_cookie.click()
 
-    if time.time() > TIMEOUT:
-        pass
+time.sleep(SHORT_WAIT_TIME)
 
-    if time.time() > FIVE_MINUTES:
-        # cookie_per_second = driver.find_element(By.ID, "cps").text
-        # print(cookie_per_second)
-        break
+for price in all_prices:
+    element_text = price.text
+
+    if element_text != "":
+        cost = int(element_text.split("\n")[1].replace(",", ""))
+        item_prices.append(cost)
+
+    print(item_prices)
+
+# money = driver.find_element(By.CLASS_NAME, "tinyCookie")
+# print(money)
+
+# while True:
+#     big_cookie.click()
+#
+#     if time.time() > TIMEOUT:
+#         pass
+#
+#     if time.time() > FIVE_MINUTES:
+#         # cookie_per_second = driver.find_element(By.ID, "cps").text
+#         # print(cookie_per_second)
+#         break
 
 time.sleep(LONG_WAIT_TIME)
