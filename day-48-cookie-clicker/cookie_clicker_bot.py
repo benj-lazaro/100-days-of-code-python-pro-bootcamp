@@ -7,56 +7,76 @@ import time
 # Constant Variable(s)
 SHORT_WAIT_TIME = 1
 LONG_WAIT_TIME = 10
-TIMEOUT = time.time() + 5
+TIMEOUT = time.time() + 7
 FIVE_MINUTES = time.time() + 60*5
 
 # Access the target website
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-driver.get("https://orteil.dashnet.org/cookieclicker/")
-time.sleep(LONG_WAIT_TIME)
-
-# Close the web cookie ads
-got_it = driver.find_element(By.CLASS_NAME, "cc_btn_accept_all")
-got_it.click()
+driver.get("http://orteil.dashnet.org/experiments/cookie/")
 time.sleep(SHORT_WAIT_TIME)
 
-# Click the preferred language
-english_language = driver.find_element(By.CSS_SELECTOR, "div #langSelect-EN")
-english_language.click()
+web_cookie_button = driver.find_element(By.CLASS_NAME, "cc_btn_accept_all")
+web_cookie_button.click()
 
-big_cookie = driver.find_element(By.ID, "bigCookie")
-time.sleep(SHORT_WAIT_TIME)
+# The cookie to click on
+cookie_to_click = driver.find_element(By.ID, "cookie")
 
-item_prices = []
-all_prices = driver.find_elements(By.CSS_SELECTOR, "div .locked")
+# Access the upgrade store
+items = driver.find_elements(By.CSS_SELECTOR, "#store div")
+item_ids = [item.get_attribute("id") for item in items]
 
-# Test clicks
-for _ in range(0, 20):
-    big_cookie.click()
+while True:
+    cookie_to_click.click()
 
-time.sleep(SHORT_WAIT_TIME)
+    if time.time() > TIMEOUT:
+        # Access individual store item upgrade
+        all_items = driver.find_elements(By.CSS_SELECTOR, "#store b")
+        item_prices = []
 
-for price in all_prices:
-    element_text = price.text
+        # Get individual item price
+        for price in all_items:
+            element_text = price.text
 
-    if element_text != "":
-        cost = int(element_text.split("\n")[1].replace(",", ""))
-        item_prices.append(cost)
+            # Convert string price item into an integer
+            if element_text != "":
+                cost = int(element_text.split("-")[1].strip().replace(",", ""))
+                item_prices.append(cost)
 
-    print(item_prices)
+        cookie_upgrades = {}
 
-# money = driver.find_element(By.CLASS_NAME, "tinyCookie")
-# print(money)
+        for n in range(len(item_prices)):
+            cookie_upgrades[item_prices[n]] = item_ids[n]
 
-# while True:
-#     big_cookie.click()
-#
-#     if time.time() > TIMEOUT:
-#         pass
-#
-#     if time.time() > FIVE_MINUTES:
-#         # cookie_per_second = driver.find_element(By.ID, "cps").text
-#         # print(cookie_per_second)
-#         break
+        # Get current cash/cookie count
+        money_element = driver.find_element(By.ID, "money").text
+
+        if "," in money_element:
+            money_element = money_element.replace(",", "")
+
+        cookie_count = int(money_element)
+
+        # Check affordable upgrades
+        affordable_upgrades = {}
+
+        for item_cost in cookie_upgrades:
+            if cookie_count > item_cost:
+                affordable_upgrades[item_cost] = cookie_upgrades[item_cost]
+
+        # Purchase affordable upgrade
+        try:
+            highest_affordable_upgrade = max(affordable_upgrades)
+        except ValueError:
+            pass
+        else:
+            to_purchase = affordable_upgrades[highest_affordable_upgrade]
+            purchase_upgrade = driver.find_element(By.ID, to_purchase)
+            purchase_upgrade.click()
+
+        timeout = time.time() + 15
+
+    if time.time() > FIVE_MINUTES:
+        cookie_per_second = driver.find_element(By.ID, "cps").text
+        print(f"Cookie per second: {cookie_per_second}")
+        break
 
 time.sleep(LONG_WAIT_TIME)
