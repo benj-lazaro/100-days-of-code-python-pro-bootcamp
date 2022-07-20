@@ -2,8 +2,11 @@
 * A bot that interacts automatically with the web-based game Cookie Clicker using Selenium Webdriver
 
 ### What does it do?
-The Cookie Clicker bot app will:
-* 
+The Cookie Clicker bot app will automatically:
+* Launch the Google Chrome browser and access the game
+* Click the cookie to earn resources to purchase upgrades
+* Purchase the highest affordable upgrade
+* Run for 5 minutes then close the browser
 
 ### How does it work?
 On the command-line (or terminal), type the following:<br>
