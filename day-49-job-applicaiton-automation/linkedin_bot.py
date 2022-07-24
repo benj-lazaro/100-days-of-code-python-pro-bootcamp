@@ -3,10 +3,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
+import os
 
 # Constant Variable(s)
 SHORT_WAIT_TIME = 2
 LONG_WAIT_TIME = 10
+USERNAME = os.environ.get("LINKEDIN_ACCOUNT")
+PASSWORD = os.environ.get("LINKEDIN_PASSWORD")
 
 # Access the LinkedIn website
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -20,10 +23,10 @@ time.sleep(SHORT_WAIT_TIME)
 
 # Provide user credentials & then click the sign-in button
 user_name = driver.find_element(By.ID, "username")
-user_name.send_keys("benjamin.lazaro@gmail.com")
+user_name.send_keys(USERNAME)
 
 user_password = driver.find_element(By.ID, "password")
-user_password.send_keys("P@ssw0rd9014766")
+user_password.send_keys(PASSWORD)
 
 user_login = driver.find_element(By.CSS_SELECTOR, "button.btn__primary--large")
 user_login.click()
